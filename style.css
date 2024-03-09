@@ -1,0 +1,86 @@
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.download-btn {
+    position: relative;
+    padding: 15px 30px;
+    background-color: #00cffc;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    border-radius: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.download-btn:hover {
+    background-color: #00b8d4;
+    transform: scale(1.05);
+}
+
+.download-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid #fff;
+    transform: translate(-50%, -50%) rotate(180deg);
+    transition: opacity 0.3s, transform 0.3s;
+    opacity: 0;
+}
+
+.download-btn:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.progress-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border: 3px solid #fff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.download-btn:hover .progress-circle {
+    opacity: 1;
+}
+
+@keyframes spin {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+    50% {
+        stroke-dasharray: 100 100;
+    }
+    100% {
+        stroke-dasharray: 100 100;
+    }
+}
